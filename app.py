@@ -40,7 +40,7 @@ async def startup_event():
     global matcher
     try:
         # Initialize the matcher with supplier data
-        matcher = SupplierMatcher('materials//SupplierList.xlsx')
+        matcher = SupplierMatcher('SupplierList.xlsx')
         print("Supplier matcher initialized successfully")
     except Exception as e:
         print(f"Error initializing supplier matcher: {str(e)}")
@@ -64,7 +64,7 @@ async def match_event(
     # Initialize matcher if not already done
     if matcher is None:
         try:
-            matcher = SupplierMatcher('materials//SupplierList.xlsx')
+            matcher = SupplierMatcher('SupplierList.xlsx')
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Failed to initialize matcher: {str(e)}")
     
@@ -113,7 +113,7 @@ async def batch_process(
     # Initialize matcher if not already done
     if matcher is None:
         try:
-            matcher = SupplierMatcher('materials//SupplierList.xlsx')
+            matcher = SupplierMatcher('SupplierList.xlsx')
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Failed to initialize matcher: {str(e)}")
     
