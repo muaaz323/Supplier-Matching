@@ -48,7 +48,7 @@ class SupplierMatcher:
         self.suppliers_df.columns = [col.lower() for col in self.suppliers_df.columns]
         
         
-        key_columns = ['Supplier Name', 'Capability', 'Category', 'Description']
+        key_columns = ['Supplier Id', 'Supplier Name', 'Capability', 'Category', 'Description']
         
         # Fill NaN values with empty strings for text columns
         for col in self.suppliers_df.columns:
@@ -229,10 +229,11 @@ class SupplierMatcher:
         results = []
         for i, idx in enumerate(top_indices):
             supplier = self.suppliers_df.iloc[idx]
+            
             results.append({
                 'Rank': i + 1,
-                'SupplierName': supplier['name'] if 'name' in supplier else f"Supplier_{idx}",
-                'SupplierID': supplier['id'] if 'id' in supplier else idx,
+                'SupplierName': supplier['supplier name'],
+                'SupplierID': supplier['supplier id'],
                 'MatchScore': float(combined_scores[idx]),
                 'TfidfScore': float(tfidf_similarities[idx]),
                 'SemanticScore': float(semantic_similarities[idx])
