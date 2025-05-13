@@ -47,8 +47,8 @@ class SupplierMatcher:
         # Convert all column names to lowercase for consistency
         self.suppliers_df.columns = [col.lower() for col in self.suppliers_df.columns]
         
-        # Assuming standard column names - adjust based on actual data
-        key_columns = ['name', 'capabilities', 'industries', 'categories', 'materials', 'processes']
+        
+        key_columns = ['Supplier Name', 'Capability', 'Category', 'Description']
         
         # Fill NaN values with empty strings for text columns
         for col in self.suppliers_df.columns:
